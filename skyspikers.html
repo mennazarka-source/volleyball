@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkySpikers | Unleash The Athlete</title>
+    <style>
+        :root {
+            --navy: #001d4a;
+            --yellow: #FFD700;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.95);
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .main-bg {
+            background: linear-gradient(rgba(0, 29, 74, 0.7), rgba(0, 29, 74, 0.7)), 
+                        url('https://images.unsplash.com/photo-1592656094267-764a45068526?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            background: var(--navy);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            border-bottom: 4px solid var(--yellow);
+            position: sticky;
+            top: 0; z-index: 1000;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        nav a:hover { color: var(--yellow); }
+
+        .container { padding: 40px 8%; flex: 1; }
+
+        .page { display: none; animation: fadeIn 0.5s ease; }
+        .page.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .glass-card {
+            background: var(--glass);
+            color: var(--navy);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        h2 { color: var(--navy); border-left: 5px solid var(--yellow); padding-left: 15px; text-transform: uppercase; margin-bottom: 20px; }
+        h3 { color: #004080; margin-top: 25px; font-weight: bold; border-bottom: 2px solid var(--yellow); display: inline-block; padding-bottom: 5px; }
+
+        .content-item { margin-bottom: 25px; padding: 20px; background: rgba(0,0,0,0.03); border-radius: 12px; }
+        b { color: var(--navy); }
+
+        .warning-box {
+            background: #ffeded;
+            border: 2px solid #d93025;
+            color: #d93025;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        footer { background: var(--navy); text-align: center; padding: 20px; font-weight: bold; }
+
+        .rotation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .zone { background: var(--navy); color: white; padding: 15px; border-radius: 10px; border: 2px solid var(--yellow); font-size: 0.9rem; }
+
+        .media-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .media-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            margin: 10px 0;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .media-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-bg">
+    <nav>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('workout')">Workout</a>
+        <a onclick="showPage('safety')">Safety</a>
+        <a onclick="showPage('moves')">Basic Skills</a>
+        <a onclick="showPage('positions')">Court Positions</a>
+        <a onclick="showPage('rules')">Rules</a>
+    </nav>
+
+    <div class="container">
+        <div id="home" class="page active">
+            <h1 style="text-align: center; font-size: 3.5rem; color: var(--yellow); text-shadow: 2px 2px 5px #000;">SkySpikers Academy</h1>
+            <div class="glass-card" style="text-align: center;">
+                <h2>Master The Court</h2>
+                <p style="font-size: 1.2rem;">The ultimate professional resource for elite volleyball players. Discipline in training, precision in movement, and zero compromise on safety.</p>
+            </div>
+        </div>
+
+        <div id="workout" class="page">
+            <div class="glass-card">
+                <h2>Elite Warm-up & Strength Training</h2>
+                
+                <div class="content-item">
+                    <h3>1. Dynamic Stretching (5-10 Mins)</h3>
+                    <p><b>Exercise:</b> Arm circles, leg swings, and torso twists. 
+                    <br><b>Why?</b> To "lubricate" joints and increase blood flow. Cold muscles are brittle; dynamic stretching prepares them for explosive contractions, preventing muscle fiber tears.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>2. Jumping Squats (3 Sets x 15)</h3>
+                    <p><b>Exercise:</b> Lower into a deep squat and explode vertically with maximum force. 
+                    <br><b>Why?</b> This develops <b>Vertical Power</b>. Volleyball relies on "Explosive Strength" in the legs for blocking and attacking above the net height.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>3. Planks & Core Rotations (3 Sets x 30 Seconds)</h3>
+                    <p><b>Exercise:</b> Hold plank position and rotate your torso side to side. 
+                    <br><b>Why?</b> Your core is your power center. A strong core allows for "Mid-air Control" and ensures maximum power transfer from your legs to your hitting arm while protecting your spine.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>4. Lateral Shuffles (Suicide Drills)</h3>
+                    <p><b>Exercise:</b> Rapid side-to-side shuffling between court lines. 
+                    <br><b>Why?</b> Volleyball is a game of lateral speed. This drills the "Neuromuscular Response" in your ankles and knees, preparing them for the rapid direction changes needed in defense.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>5. Burpees (Full Body Explosion - 3 Sets x 10)</h3>
+                    <p><b>Exercise:</b> A rapid transition from a push-up to a vertical jump. 
+                    <br><b>Why?</b> It builds extreme cardiovascular stamina and mimics the act of "Diving" for a ball and recovering instantly to stay in the play.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>6. Wall Sits (3 Sets x 45 Seconds)</h3>
+                    <p><b>Exercise:</b> Sit against a wall with your knees at 90 degrees. Hold the position. 
+                    <br><b>Why?</b> Builds leg endurance and strengthens the muscles you use to stay low in defensive positions.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>7. Box Jumps (3 Sets x 12)</h3>
+                    <p><b>Exercise:</b> Jump onto a raised platform or box with both feet, then step down. 
+                    <br><b>Why?</b> Increases explosive jumping power needed for spiking and blocking. Trains fast-twitch muscle fibers.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>8. Shoulder Strengthening - Band Pulls (3 Sets x 15)</h3>
+                    <p><b>Exercise:</b> Use resistance bands to pull in different directions (front, side, rotations). 
+                    <br><b>Why?</b> Strengthens rotator cuff muscles to prevent shoulder injuries from repetitive spiking and serving.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>9. Medicine Ball Slams (3 Sets x 12)</h3>
+                    <p><b>Exercise:</b> Lift a medicine ball overhead and slam it down to the ground with force. 
+                    <br><b>Why?</b> Mimics the spiking motion and builds explosive upper body power and core strength.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>10. Cool Down - Static Stretching (5-10 Mins)</h3>
+                    <p><b>Exercise:</b> Hold stretches for hamstrings, quads, shoulders, and back for 20-30 seconds each. 
+                    <br><b>Why?</b> Helps muscles recover, reduces soreness, and increases flexibility for better range of motion.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="safety" class="page">
+            <div class="glass-card">
+                <h2>Professional Safety Protocol</h2>
+                
+                <div class="content-item">
+                    <h3>Knee Pads (Ligament Shield)</h3>
+                    <p><b>Technical Detail:</b> Ankle inversion sprains are the #1 injury in volleyball. This occurs when a player lands on an opponent's or teammate's foot at the net. 
+                    <br><b>Why it's vital:</b> Professional braces act as external ligaments. They restrict the dangerous lateral rolling of the ankle while allowing the vertical flexion needed for jumping.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>Volleyball Shoes (The Gum Rubber Advantage)</h3>
+                    <p><b>Technical Detail:</b> You must use shoes with <b>Gum Rubber Soles</b>. 
+                    <br><b>Why it's vital:</b> Indoor gym floors are slippery. Gum rubber reacts with the floor's friction to provide a "sticky" grip. Running shoes lack this, leading to slips that cause ACL (Knee) tears during sudden stops.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>Apparel Standards (Performance Fabrics)</h3>
+                    <p><b>Technical Detail:</b> 100% moisture-wicking Polyester/Synthetic blends only. 
+                    <br><b>Why it's vital:</b> Cotton absorbs sweat, becomes heavy, and causes severe skin chafing. Tight-fitting jerseys are mandatory to prevent "Net Touch" fouls, as loose clothing often catches on the net mesh.</p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>❌ ABSOLUTE ZERO ACCESSORIES POLICY</h3>
+                    <p><b>All jewelry and hardware must be removed. There are NO exceptions due to the following hazards:</b></p>
+                    <ul>
+                        <li><b>Rings:</b> Can catch in the net mesh during a block, leading to "Ring Avulsion"—a catastrophic finger injury.</li>
+                        <li><b>Earrings/Piercings:</b> A high-speed volleyball (traveling up to 100km/h) hitting an earring can drive the metal post into the skull or tear the earlobe instantly.</li>
+                        <li><b>Watches/Bracelets:</b> These can shatter upon contact during a pass, causing deep lacerations to you or your teammates.</li>
+                        <li><b>Necklaces:</b> Risk of strangulation or snapping and causing eye injuries during rapid jumping movements.</li>
+                        <li><b>Hair:</b> Must be secured. Loose hair causes "Momentary Blindness" during serves or hits, which is a major safety risk.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="moves" class="page">
+            <div class="glass-card">
+                <h2>Basic Skills</h2>
+                
+                <div class="content-item">
+                    <h3>1. The Set (Setting Up Your Teammate)</h3>
+                    <p><b>How to do it:</b> Position yourself under the ball. Make a triangle shape with your hands above your forehead. Use your fingertips (not your palms) to push the ball up and toward your teammate. Push with your legs, not just your arms.
+                    <br><b>Why it matters:</b> The setter controls where the ball goes. A good set makes it easy for your teammate to spike the ball.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>2. Pass (Receiving the Ball)</h3>
+                    <p><b>How to do it:</b> Hold your arms straight and put your hands together. Make a flat platform with your forearms. Don't swing your arms - let the ball bounce off them. Bend your knees and use your legs to aim the ball.
+                    <br><b>Why it matters:</b> Passing is the first touch. A good pass makes everything else easier.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>3. Hitting/Spiking (Attacking the Ball)</h3>
+                    <p><b>How to do it:</b> Take three steps: Left foot, Right foot, then Left-Right together quickly. Jump as high as you can. Swing your arm and snap your wrist down over the ball to make it go down fast into the other court.
+                    <br><b>Why it matters:</b> This is how you score points by hitting the ball hard into the opponent's side.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>4. Underhand Serve (Easy Serve)</h3>
+                    <p><b>How to do it:</b> Hold the ball in your non-hitting hand. Stand with one foot forward. Make a fist with your hitting hand. Swing your arm like a pendulum and hit the bottom of the ball with your fist. The ball should go up and over the net.
+                    <br><b>Why it matters:</b> This is the easiest serve to learn. Every point starts with a serve, so you must get the ball over the net.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="positions" class="page">
+            <div class="glass-card">
+                <h2>Positions & Tactical Roles</h2>
+                
+                <div class="content-item">
+                    <h3>1. The Setter (S) - The General</h3>
+                    <p><b>Primary Role:</b> The quarterback of the team. They take the second touch and "set" the ball for hitters. They must have elite decision-making skills to outsmart the opponent's blockers.
+                    <br><b>Key Skills:</b> Quick hands, court vision, deceptive ball placement, excellent footwork to get to every pass
+                    <br><b>Physical Requirements:</b> Fast reaction time, good vertical jump for dump shots and emergency attacks
+                    <br><b>Starting Position:</b> Usually rotates from Zone 1 (Right Back) when serving, moves to front right (Zone 2) after rotation
+                    <br><b>Tactical Responsibility:</b> Read the opponent's block, call plays, distribute sets to multiple hitters, create one-on-one matchups for attackers</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>2. Outside Hitter (OH) - The Primary Scorer</h3>
+                    <p><b>Primary Role:</b> The team's main offensive weapon and most consistent attacker. Plays in Zone 4 (Front Left).
+                    <br><b>Key Skills:</b> Powerful and accurate hitting, excellent serve reception, strong passing platform, defensive digging ability
+                    <br><b>Physical Requirements:</b> High vertical jump (35"+ for elite players), exceptional stamina, quick lateral movement
+                    <br><b>Starting Position:</b> Front left (Zone 4) in offensive rotation, left back (Zone 5) in back row
+                    <br><b>Tactical Responsibility:</b> Primary attacker on high sets, receives 60-70% of team's serves, must be able to hit against 2-3 blockers, cover tips and off-speed shots</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>3. Middle Blocker (MB) - The Wall</h3>
+                    <p><b>Primary Role:</b> The team's defensive anchor and quick-tempo attacker. Plays in Zone 3 (Front Center).
+                    <br><b>Key Skills:</b> Reading the setter, elite blocking technique, quick-tempo attacks (1-sets, slides), extreme lateral speed along the net
+                    <br><b>Physical Requirements:</b> Tallest player on team (typically 6'4"+ for men, 6'0"+ for women), fastest lateral movement, explosive vertical jump
+                    <br><b>Starting Position:</b> Middle front (Zone 3) in offensive rotation, middle back (Zone 6) when in back row
+                    <br><b>Tactical Responsibility:</b> Close the block on both sides, run quick attacks to split the opponent's block, transition defense after blocks, protect against quick middle attacks
+                    <br><b>Special Note:</b> Often substituted out when rotating to back row and replaced by a Libero</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>4. Libero (L) - Defensive Specialist</h3>
+                    <p><b>Primary Role:</b> Elite defender and serve-receive specialist who only plays in the back row.
+                    <br><b>Key Skills:</b> Exceptional digging technique, perfect passing platform, court reading ability, leadership in defensive formations
+                    <br><b>Physical Requirements:</b> Quick reflexes, low center of gravity, extreme lateral speed, ability to read hitters
+                    <br><b>Visual Identifier:</b> Wears a contrasting colored jersey from teammates
+                    <br><b>Positional Rules:</b> Cannot serve (in most leagues), cannot attack above net height, cannot block or attempt to block, unlimited substitutions with back-row players (usually Middle Blockers)
+                    <br><b>Zones Played:</b> Primarily Zones 5 and 6 (left back and middle back)
+                    <br><b>Tactical Responsibility:</b> Anchor the serve-receive formation, dig hard-driven spikes, organize back-row defense, communicate rotations and coverage</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>5. Opposite Hitter (OPP) - The Powerhouse</h3>
+                    <p><b>Primary Role:</b> The team's right-side attacker who plays opposite the setter in rotation. The "go-to" hitter in pressure situations.
+                    <br><b>Key Skills:</b> Hitting with left or right hand from the right side, blocking the opponent's outside hitter, back-row attacking capability
+                    <br><b>Physical Requirements:</b> Highest vertical jump on team, exceptional power, ability to hit sharp angles from right side
+                    <br><b>Starting Position:</b> Front right (Zone 2) when setter is in back row, right back (Zone 1) when setter is in front
+                    <br><b>Tactical Responsibility:</b> Primary attacker when setter is front row, block opponent's best hitter (outside), score on back-row attacks, hit out of system sets
+                    <br><b>Special Note:</b> Often receives fewer serve-receive responsibilities to save energy for attacking and blocking</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>6. Defensive Specialist (DS) - The Backup Defender</h3>
+                    <p><b>Primary Role:</b> Similar to Libero but can serve. A back-row substitute for players who are weaker in serve-receive or defense.
+                    <br><b>Key Difference from Libero:</b> Can serve, counts as a regular substitution (limited to 6 per set), does not wear a contrasting jersey
+                    <br><b>When Used:</b> Often substitutes for setters or opposite hitters when they rotate to the back row</p>
+                </div>
+
+                <h3 style="display: block; text-align: center;">Court Zones & Rotation Map</h3>
+                <div class="rotation-grid">
+                    <div class="zone">Zone 4<br>(Left Front)</div>
+                    <div class="zone">Zone 3<br>(Middle Front)</div>
+                    <div class="zone">Zone 2<br>(Right Front)</div>
+                    <div class="zone">Zone 5<br>(Left Back)</div>
+                    <div class="zone">Zone 6<br>(Middle Back)</div>
+                    <div class="zone">Zone 1<br>(Right Back - Server)</div>
+                </div>
+                <p style="text-align: center; font-weight: bold; color: var(--navy);">Rule: The team rotates <b>Clockwise</b> every time they win a point on the opponent's serve.</p>
+            </div>
+        </div>
+
+        <div id="rules" class="page">
+            <div class="glass-card">
+                <h2>Official Volleyball Rules</h2>
+                
+                <div class="content-item">
+                    <h3>Scoring System</h3>
+                    <p><b>Rally Scoring:</b> Every serve results in a point, regardless of which team served. Games are played to <b>25 points</b> (must win by 2). The deciding 5th set is played to <b>15 points</b>.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>Contact Rules</h3>
+                    <p><b>Three Touches Maximum:</b> Each team is allowed a maximum of <b>3 touches</b> to return the ball over the net (excluding blocks). 
+                    <br><b>Double Contact:</b> One player cannot touch the ball twice consecutively, except during a block.
+                    <br><b>Carry/Lift:</b> The ball must be clearly hit, not caught, lifted, or thrown. Setting with open hands requires clean contact.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>In or Out? Boundary Rules</h3>
+                    <p><b>IN:</b> The ball is <b>IN</b> if any part of it touches the boundary line. The lines are part of the court.
+                    <br><b>OUT:</b> The ball is <b>OUT</b> if it lands completely outside the boundary lines, hits the ceiling/wall, or passes under the net.
+                    <br><b>Antenna:</b> The ball must cross the net within the antenna markers. Touching the antenna is <b>OUT</b>.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>Net Rules</h3>
+                    <p><b>Net Touch:</b> Players cannot touch the net during play. Any contact with the net by a player is a violation.
+                    <br><b>Crossing the Centerline:</b> Players' feet cannot completely cross the centerline under the net. A foot may touch the line, but not fully cross it.
+                    <br><b>Reaching Over:</b> You cannot reach over the net to attack the ball unless the opponent has used all 3 touches or the ball is clearly coming over.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>Service Rules</h3>
+                    <p><b>Service Zone:</b> The server must serve from behind the end line, within the service zone (between the two sidelines extended).
+                    <br><b>Service Faults:</b> Stepping on or over the line before contact, hitting the net, landing out of bounds, or not getting the ball over the net.
+                    <br><b>Let Serve:</b> There is <b>NO</b> "let serve" in modern volleyball. A serve that touches the net but goes over is legal and in play.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>Rotation & Positioning</h3>
+                    <p><b>Rotation Order:</b> Teams must maintain their rotation order throughout the set. Players rotate clockwise when winning the serve back.
+                    <br><b>Overlap Violation:</b> At the moment of service, players must be in their correct rotational positions (front row ahead of back row, players in their zone order). After the serve, they can move anywhere.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>Back Row Attack Rule</h3>
+                    <p><b>Attack Line (3-meter line):</b> Back row players cannot attack the ball above net height when in front of the attack line. They must jump from behind this line (though they can land in front of it).</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>Block Rules</h3>
+                    <p><b>Who Can Block:</b> Only front row players can participate in a block.
+                    <br><b>Block Contact:</b> A block does NOT count as one of the team's 3 touches. After a block, the team still has 3 contacts.
+                    <br><b>Blocking the Serve:</b> It is illegal to block or attack a serve.</p>
+                </div>
+
+                <div class="content-item">
+                    <h3>Libero Special Rules</h3>
+                    <p><b>Cannot:</b> Serve (in some leagues), attack above net height, block, or attempt to block.
+                    <br><b>Setting Restriction:</b> If the Libero sets the ball with overhand fingers while in front of the attack line, teammates cannot attack it above net height.
+                    <br><b>Substitution:</b> Libero substitutions are unlimited and do not count as regular substitutions.</p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠️ Common Violations - Instant Point Loss</h3>
+                    <ul>
+                        <li><b>Four Hits:</b> Touching the ball more than 3 times before returning it</li>
+                        <li><b>Lift/Carry:</b> Prolonged contact with the ball or guiding it</li>
+                        <li><b>Double Contact:</b> Same player hitting twice in a row (except on block)</li>
+                        <li><b>Net Violation:</b> Touching the net with any part of your body during play</li>
+                        <li><b>Foot Fault:</b> Stepping on or over the service line or centerline</li>
+                        <li><b>Back Row Attack:</b> Back row player attacking from in front of the 3-meter line</li>
+                        <li><b>Rotation Error:</b> Players not in correct positions at moment of serve</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>&copy; 2026 SKY SPIKERS | PROFESSIONAL STANDARDS</footer>
+</div>
+
+<script>
+    function showPage(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+</script>
+
+</body>
+</html>
